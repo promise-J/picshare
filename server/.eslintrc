@@ -1,0 +1,22 @@
+{
+  "parser": "babel-eslint",
+  "extends": ["standard"],
+  "env": {
+    "jest": true,
+    "jasmine": true
+  },
+  "rules": {
+    "semi": ["off", "never"],
+    "quotes": ["error", "double"],
+    "comma-dangle": [
+      "error",
+      {
+        "arrays": "only-multiline",
+        "objects": "only-multiline",
+        "imports": "never",
+        "exports": "never",
+        "functions": "never"
+      }
+    ]
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "name": "photocentric",
+  "version": "1.0.0",
+  "description": "```bash npm test # test using Jest npm run coverage # test and open the coverage report in the browser npm run lint # lint using ESLint npm run dev # run the API in development mode npm run prod # run the API in production mode npm run docs # generate API docs ```",
+  "main": "index.js",
+  "scripts": {
+    "server": "cd ./server && npm start",
+    "start": "concurrently \" npm run server\""
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "concurrently": "^5.2.0"
+  }
+}
