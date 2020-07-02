@@ -1,8 +1,8 @@
 import request from "supertest";
-import { apiRoot } from "../../config";
+import { apiRoot } from "../../../config";
 import { User } from "../user";
-import { verify } from "../../services/jwt";
-import express from "../../services/express";
+import { verify } from "../../../services/jwt";
+import express from "../../../services/express";
 import routes from ".";
 
 const app = () => express(apiRoot, routes);
