@@ -1,5 +1,5 @@
-import { sign } from "../../services/jwt";
-import { success } from "../../services/response/";
+import { sign } from "../../../services/jwt";
+import { success } from "../../../services/response";
 import { User } from "../user";
 
 export const login = async (req, res, next) =>

@@ -2,7 +2,7 @@ import crypto from "crypto";
 import bcrypt from "bcryptjs";
 import mongoose, { Schema } from "mongoose";
 
-import { env } from "../../config";
+import { env } from "../../../config";
 
 const userSchema = new Schema(
   {
@@ -60,7 +60,7 @@ userSchema.pre("save", function (next) {
 });
 
 userSchema.methods = {
-  view (full) {
+  view(full) {
     const view = {};
     let fields = ["id", "name", "picture"];
 
@@ -75,7 +75,7 @@ userSchema.methods = {
     return view;
   },
 
-  authenticate (password) {
+  authenticate(password) {
     return bcrypt
       .compare(password, this.password)
       .then((valid) => (valid ? this : false));

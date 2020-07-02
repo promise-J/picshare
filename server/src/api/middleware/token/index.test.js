@@ -1,6 +1,6 @@
 import { token } from ".";
-import { signSync } from "../jwt";
-import { User } from "../../api/user";
+import { signSync } from "../../../services/jwt";
+import { User } from "../../components/user";
 let res, next, req, user1;
 
 beforeEach(async () => {
@@ -24,17 +24,21 @@ beforeEach(async () => {
 
 describe("Token", () => {
   it("does not send any response when auth header is valid", async () => {
-    await token(req, res, next)
+    await token(req, res, next);
     expect(res.status).not.toBeCalled();
     expect(res.json).not.toBeCalled();
   });
 
   it("responds with 403 when user cannot be found or invalid user id", async () => {
-    await token({
-      headers: {
-        Authorization: signSync("12345567"),
-      }
-    }, res, next)
+    await token(
+      {
+        headers: {
+          Authorization: signSync("12345567"),
+        },
+      },
+      res,
+      next
+    );
 
     expect(res.status).toBeCalledWith(403);
     expect(res.json).toBeCalledWith({
@@ -45,12 +49,12 @@ describe("Token", () => {
   });
 
   it("does not send 403 response when object has not been passed", async () => {
-    await token({ headers: {} }, res, next)
+    await token({ headers: {} }, res, next);
     expect(res.status).toBeCalledWith(403);
     expect(res.json).toBeCalledWith({
       valid: false,
       message: "Auth token missing",
-      param: "Header"
+      param: "Header",
     });
   });
 });
